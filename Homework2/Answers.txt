@@ -1,4 +1,6 @@
-Kernel — the central part of the operating system that acts as an interface between applications and the computer hardware. It is loaded into the computer’s RAM and controls hardware resources (CPU, memory, disks, etc.) through device drivers. It also supports multitasking and multi-user operation.
+Kernel — the central part of the operating system that acts as an interface between applications and the computer hardware.
+It is loaded into the computer’s RAM and controls hardware resources (CPU, memory, disks, etc.) through device drivers. 
+It also supports multitasking and multi-user operation.
 Typically, a kernel (or any similar core component of an operating system) includes:
 1. An interrupt handler, which processes all requests and completed I/O operations that require the kernel’s attention;
 2. A scheduler, which determines which programs share the CPU and in what order; and
