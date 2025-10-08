@@ -1,1 +1,23 @@
-Kernel
+Kernel — the central part of the operating system that acts as an interface between applications and the computer hardware. It is loaded into the computer’s RAM and controls hardware resources (CPU, memory, disks, etc.) through device drivers. It also supports multitasking and multi-user operation.
+Typically, a kernel (or any similar core component of an operating system) includes:
+1. An interrupt handler, which processes all requests and completed I/O operations that require the kernel’s attention;
+2. A scheduler, which determines which programs share the CPU and in what order; and
+3. A supervisor, which allocates the CPU and other system resources to each process when scheduled.
+A kernel may also include a memory manager, responsible for managing the operating system’s address space and sharing memory among processes and other kernel components.
+Other parts of the operating system or application programs request the kernel’s services through a defined set of system calls (program interfaces).
+
+/lib - it is a system folder that stores essential shared libraries required by the kernel and programs to run.
+Contains:
+- libraries (.so files) that programs use to perform basic tasks;
+- kernel modules (drivers).
+libraries - A library is a collection of pre-written code that programs can reuse instead of writing everything from the very beginning every time.
+They provide common functions — like reading files, printing text, connecting to networks, or using memory efficiently.
+In Linux, most system libraries are stored in /lib or /usr/lib.
+
+System Utilities - programs that help manage, maintain, and monitor the operating system.
+What they do:
+Check disk space and errors.
+Manage files and processes.
+Configure networks and system settings.
+
+
