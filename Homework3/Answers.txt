@@ -19,5 +19,8 @@ The system enters a specific target (multi-user or graphical mode).
 This determines whether it boots to a command line or a desktop environment.
 7. Login and Shell
 The login manager (CLI or GUI) prompts for username and password. CLI stands for command line interface. GUI stands for Graphical User Interface. 
-After login, the user’s shell or desktop session starts — and the system is ready to use.
+After login, the user’s shell or desktop session starts, and the system is ready to use.
 
+-rw------- means: Owner (the user) can read and write the file, group and others cannot do anything;
+To add execute (x) permission, you use the chmod command: chmod u+x <file> ( perission for an owver) -> rwx------
+chmod g+x file, chmod o+x file, chmod a+x file (permission for: a group, others, all)
