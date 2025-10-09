@@ -1,1 +1,23 @@
-BIOS
+   The Linux System booting stages:
+1. BIOS / UEFI:
+When the computer powers on, the BIOS or UEFI firmware performs the POST (Power-On Self Test) to check hardware.
+Then it finds a bootable device and loads the bootloader from it.
+2. MBR (MAster Boot Record):
+The first 512 bytes of that device
+The bootloader code in the MBR (first stage of GRUB) is loaded into memory.
+3. Bootloader (GRUB):
+The bootloader (usually GRUB) loads the Linux kernel and the initramfs (temporary filesystem) into memory.
+It may also show a menu to choose which OS or kernel to boot.
+4. Kernel Initialization:
+The kernel takes control, initializes CPU, memory, and hardware drivers.
+It mounts the root filesystem and starts the first process (init or systemd).
+5. systemd / init Process:
+systemd (or init on older systems) starts all system services and background daemons.
+It prepares the environment so the system is ready for user login.
+6. Runlevel/Target:
+The system enters a specific target (multi-user or graphical mode).
+This determines whether it boots to a command line or a desktop environment.
+7. Login and Shell
+The login manager (CLI or GUI) prompts for username and password. CLI stands for command line interface. GUI stands for Graphical User Interface. 
+After login, the user’s shell or desktop session starts — and the system is ready to use.
+
