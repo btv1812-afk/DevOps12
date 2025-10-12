@@ -1,11 +1,11 @@
-   The Linux System booting stages:
+  1.) The Linux System booting stages:
 1. BIOS / UEFI:
 When the computer powers on, the BIOS or UEFI firmware performs the POST (Power-On Self Test) to check hardware.
 Then it finds a bootable device and loads the bootloader from it.
 2. MBR (MAster Boot Record):
 The first 512 bytes of that device
 The bootloader code in the MBR (first stage of GRUB) is loaded into memory.
-3. Bootloader (GRUB):
+3. Bootloader (GRUB or LILO):
 The bootloader (usually GRUB) loads the Linux kernel and the initramfs (temporary filesystem) into memory.
 It may also show a menu to choose which OS or kernel to boot.
 4. Kernel Initialization:
@@ -21,13 +21,24 @@ This determines whether it boots to a command line or a desktop environment.
 The login manager (CLI or GUI) prompts for username and password. CLI stands for command line interface. GUI stands for Graphical User Interface. 
 After login, the user’s shell or desktop session starts, and the system is ready to use.
 
--rw------- means: Owner (the user) can read and write the file, group and others cannot do anything;
+  2.) System logs are stored in various files located in the /var/log directory.
+The most common tool for viewing logs is the command-line tool "tail", which displays the last few lines
+of a file.
+Other useful tools include "grep" to search for specific keywords, "less" to navigate through large log
+files, and "journalctl" (journalctl -xe) to view logs collected by systemd.
+
+  3.) -rw------- means: Owner (the user) can read and write the file, group and others cannot do anything;
 To add execute (x) permission, you use the chmod command: chmod u+x <file> ( perission for an user(owner)) -> rwx------
 chmod g+x file, chmod o+x file, chmod a+x file (permission for: a group, others)
 
-dpkg is a low-level package management tool used for individual package operations, such as installing, removing, or querying packages. It can be used directly from the command line.
-dpkg handles the installation of individual package files, but it does not automatically resolve and install package dependencies. Managing dependencies is typically done by higher-level package managers like apt.
-apt is a higher-level package manager that can automatically resolve and install package dependencies when you request to install a package. It provides a more user-friendly interface for managing packages and their dependencies.
-apt is a package manager that simplifies package management tasks on Debian-based systems. It acts as a front-end to lower-level tools like dpkg and provides a more comprehensive and user-friendly package management experience.
+  4.) dpkg is a low-level package management tool used for individual package operations, such as installing, removing, or querying packages. 
+It can be used directly from the command line.
+dpkg handles the installation of individual package files, but it does not automatically resolve and install package dependencies. 
+Managing dependencies is typically done by higher-level package managers like apt.
+
+apt is a higher-level package manager that can automatically resolve and install package dependencies when you request to install a package. 
+It provides a more user-friendly interface for managing packages and their dependencies.
+apt is a package manager that simplifies package management tasks on Debian-based systems. 
+It acts as a front-end to lower-level tools like dpkg and provides a more comprehensive and user-friendly package management experience.
 
 
