@@ -1,2 +1,6 @@
+#!/bin/bash
+# create the script to change the hostname to ubuntu22
 
-# first script
+sudo hostnamectl set-hostname ubuntu22
+echo "Hostname changed to ubuntu22"
+
