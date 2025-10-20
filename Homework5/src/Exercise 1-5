@@ -1,0 +1,58 @@
+1.#!/bin/bash
+
+echo "Hello world!"
+~
+2.#!/bin/bash
+
+#Check the user name and greets them using that name:
+
+read -p "Enter your username: " username
+
+echo "Welcome $username!"
+~
+3.#!/bin/bash
+
+#Check if a file exist:
+
+read -p "Enter filename: " filename
+
+if [ -f $filename ] ; then
+
+echo "The file exists."
+
+else
+ echo "The file doesn't exist."
+fi
+~
+4. #!/bin/bash
+
+# Prit numbers from 1 to 10 using a loop
+
+for ((i=1; i<=10; i++))
+do
+ echo $i
+
+done
+~
+5.#!/bin/bash
+
+#Copy fiels from one location to another one
+
+#set the destination location
+copy_dir="trash"
+
+#set the source location
+source_dir="bum/copy2try"
+#can use full path: /home/vboxuser/source(copy)_dir/file
+
+cp -L -r "${source_dir}" "${copy_dir}"
+#-r: copy directories recursively — i.e., copy not just the folder itself, but all files and subfolders inside it.
+# -L: Follow symbolic links and copy the actual files they point to, not the symlinks themselves.
+
+# Check if the copy was successful
+if [ $? -eq 0 ]; then
+  echo "Copy  completed successfully."
+else
+  echo "Copy failed. Please check the source and copy directories."
+fi
+
