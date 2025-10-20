@@ -53,25 +53,19 @@ fi
 ~
 10.
 #!/bin/bash
-# Script which watching directory "~/watch"
 
-# Specify the path to directory to watch
+mkdir -p ~/watch
+while true; do
 
-dir_to_watch="/home/vboxuser/watch" #or ш$HOME/watch
-
-# Monitor for new files and process them
-
-inotifywait -m -e create --format '%w%f' "$dir_to_watch" | while read new_file
-do
-
-  cat "$new_file"
-
- backup_file=${new_file}.back
-
-        mv "$new_file" "$backup_file"
-
-        echo "File renamed to: $backup_file"
-
+for file in ~/watch/*; do
+if [[ "$file" == *.back ]] ; then
+continue
+elif [[ -f "$file" ]] ; then
+cat "$file"
+mv "$file" "$file.back"
+fi
+done
+sleep 5
 
 done
 ~
@@ -80,7 +74,8 @@ done
 Description=Watch ~/watch directory for new file
 
 [Service]
-ExecStart=/home/vboxuser/watch_dir
+Type=simple
+ExecStart=/usr/local/bin/watch_dir
 Restart=always
 
 
