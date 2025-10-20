@@ -1,19 +1,17 @@
 6.#!/bin/bash
 
-read -p "Enter your senstence: " sentence
+echo -n "Enter a sentence: "
+read sentence
 
-read -a words <<< "$sentence"
+reversed_sentence=""
 
-num_words=${#words[@]}
-
-echo -n "Reversed sentence: "
-
-for ((i=num_words-1; i>=0; i--))
-do
-        echo -n "${words[i]} "
-
+for word in $sentence; do
+        reversed_sentence="$word $reversed_sentence"
 done
+
+echo "$reversed_sentence"
 ~
+
 7.#!/bin/bash
 
 #script for count the number of lines in a file
@@ -40,17 +38,18 @@ do
 echo $fruit
 done
 ~
-9. #!/bin/bash
+9.#!/bin/bash
 
-read -p "Enter the filename: " filename
+echo -n "Enter filename: "
+read filename
 
 if [ -f  "$filename" ] ; then
-while read line; do
-        echo "$line"
-done < "$filename"
+        cat "$filename"
+
 else
  echo "The file doesn't exist"
 fi
+
 ~
 10.
 #!/bin/bash
