@@ -5,16 +5,16 @@ echo "Hello world!"
 2.#!/bin/bash
 
 #Check the user name and greets them using that name:
-
-read -p "Enter your username: " username
+echo -n "Enter filename: "
+read username
 
 echo "Welcome $username!"
 ~
 3.#!/bin/bash
 
 #Check if a file exist:
-
-read -p "Enter filename: " filename
+echo -n "Enter filename: "
+read filename
 
 if [ -f $filename ] ; then
 
@@ -42,12 +42,10 @@ done
 copy_dir="trash"
 
 #set the source location
-source_dir="bum/copy2try"
+source_dir="bum/newfile2"
 #can use full path: /home/vboxuser/source(copy)_dir/file
 
-cp -L -r "${source_dir}" "${copy_dir}"
-#-r: copy directories recursively — i.e., copy not just the folder itself, but all files and subfolders inside it.
-# -L: Follow symbolic links and copy the actual files they point to, not the symlinks themselves.
+cp "${source_dir}" "${copy_dir}"
 
 # Check if the copy was successful
 if [ $? -eq 0 ]; then
@@ -55,4 +53,5 @@ if [ $? -eq 0 ]; then
 else
   echo "Copy failed. Please check the source and copy directories."
 fi
+
 
