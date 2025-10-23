@@ -1,0 +1,31 @@
+
+#generate the number from 1 to 100
+min=1
+max=100
+random_num=$(($RANDOM%($max-$min+1)))
+
+echo "I generated the number between 1 to 100 "
+#user has 5 attempts
+attempts=5
+
+echo "You have $attempts attempts to guess. "
+
+for ((i=1; i<=attempts; i++))
+do
+        echo -n "Attempt: $i. Enter your number: "
+read  number
+
+if (( "$number" == "$random_num" )) ; then
+        echo "Congratulations! You guessed the right number."
+        exit
+elif (( "$number" >  "$random_num" )) ; then
+        echo "Too high"
+else
+        echo "Too low"
+fi
+
+if (( i=="$attempts" )); then
+        echo "Sorry, you lose :( You have used all attmepts, the number is "$random_num""
+fi
+
+done
