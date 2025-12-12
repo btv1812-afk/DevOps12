@@ -17,4 +17,3 @@ def guess_number():
      print(f"Sorry, you are out of attemps. The right number is {random_num}.")
 
 guess_number()
-
