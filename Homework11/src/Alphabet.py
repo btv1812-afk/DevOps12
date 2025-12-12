@@ -22,7 +22,7 @@ class EnglishAlphabet(Alphabet):
 
     @staticmethod
     def example():
-        return "Text for an example"
+        return "Text for an exapmple"
 
 
 alph = EnglishAlphabet()
