@@ -1,0 +1,35 @@
+class Alphabet:
+    def __init__(self, lang, letters):
+        self.lang = lang
+        self.letters = letters
+
+    def printLetters(self):
+        print (f"Letter: {self.letters}")
+
+    def lettersNum(self):
+        print (len(self.letters))
+
+class EnglishAlphabet(Alphabet):
+    _letters_num = 26
+    def __init__(self):
+        super().__init__('Eng', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+
+    def s_en_letter(self, letter):
+        return letter.upper() in self.letters
+
+    def lettersNum(self):
+        return EnglishAlphabet._letters_num
+
+    @staticmethod
+    def example():
+        return "Text for an example"
+
+
+alph = EnglishAlphabet()
+
+alph.printLetters()
+print (f"Кількість літер: {alph.lettersNum()}")
+print (f"Чи належить 'F' {alph.s_en_letter('F')}")
+print (f"Чи належить 'щ' {alph.s_en_letter('щ')}")
+print (f"{EnglishAlphabet.example()}")
+
