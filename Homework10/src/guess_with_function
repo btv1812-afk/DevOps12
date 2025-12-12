@@ -1,0 +1,20 @@
+import random
+
+def guess_number():
+     random_num = random.randint(1, 100)
+     attempts = 5
+     print(f"I generated a number between 1 and 100. You have {attempts} attempts to guess.")
+     for i in range(attempts):
+         number = int(input("Enter your number: "))
+
+         if number == random_num:
+             print("Congratulations! You guessed the right number.")
+             return
+         elif number > random_num:
+             print("Too high")
+         else:
+             print("Too low")
+     print(f"Sorry, you are out of attemps. The right number is {random_num}.")
+
+guess_number()
+
