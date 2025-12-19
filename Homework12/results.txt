@@ -1,0 +1,234 @@
+
+1. GET all students
+200
+[
+  {
+    "age": " 21",
+    "first_name": "Kate",
+    "id": "1",
+    "last_name": "Krack"
+  },
+  {
+    "age": "30",
+    "first_name": "Anna",
+    "id": "2",
+    "last_name": "Hogron"
+  },
+  {
+    "age": "35",
+    "first_name": "Chris",
+    "id": "3",
+    "last_name": "Evans"
+  },
+  {
+    "age": "33",
+    "first_name": "John",
+    "id": "4",
+    "last_name": "Krack"
+  }
+]
+
+2. POST student 1
+201
+{
+  "age": "20",
+  "first_name": "Alice",
+  "id": "5",
+  "last_name": "Johnson"
+}
+
+2. POST student 2
+201
+{
+  "age": "22",
+  "first_name": "Bob",
+  "id": "6",
+  "last_name": "Smith"
+}
+
+2. POST student 3
+201
+{
+  "age": "25",
+  "first_name": "Charlie",
+  "id": "7",
+  "last_name": "Brown"
+}
+
+3. GET all students
+200
+[
+  {
+    "age": " 21",
+    "first_name": "Kate",
+    "id": "1",
+    "last_name": "Krack"
+  },
+  {
+    "age": "30",
+    "first_name": "Anna",
+    "id": "2",
+    "last_name": "Hogron"
+  },
+  {
+    "age": "35",
+    "first_name": "Chris",
+    "id": "3",
+    "last_name": "Evans"
+  },
+  {
+    "age": "33",
+    "first_name": "John",
+    "id": "4",
+    "last_name": "Krack"
+  },
+  {
+    "age": "20",
+    "first_name": "Alice",
+    "id": "5",
+    "last_name": "Johnson"
+  },
+  {
+    "age": "22",
+    "first_name": "Bob",
+    "id": "6",
+    "last_name": "Smith"
+  },
+  {
+    "age": "25",
+    "first_name": "Charlie",
+    "id": "7",
+    "last_name": "Brown"
+  }
+]
+
+4. PATCH second student
+200
+{
+  "age": "30",
+  "first_name": "Anna",
+  "id": "2",
+  "last_name": "Hogron"
+}
+
+5. GET second student
+200
+{
+  "age": "30",
+  "first_name": "Anna",
+  "id": "2",
+  "last_name": "Hogron"
+}
+
+6. PUT third student
+200
+{
+  "age": "35",
+  "first_name": "Chris",
+  "id": "3",
+  "last_name": "Evans"
+}
+
+7. GET third student
+200
+{
+  "age": "35",
+  "first_name": "Chris",
+  "id": "3",
+  "last_name": "Evans"
+}
+
+8. GET all students
+200
+[
+  {
+    "age": " 21",
+    "first_name": "Kate",
+    "id": "1",
+    "last_name": "Krack"
+  },
+  {
+    "age": "30",
+    "first_name": "Anna",
+    "id": "2",
+    "last_name": "Hogron"
+  },
+  {
+    "age": "35",
+    "first_name": "Chris",
+    "id": "3",
+    "last_name": "Evans"
+  },
+  {
+    "age": "33",
+    "first_name": "John",
+    "id": "4",
+    "last_name": "Krack"
+  },
+  {
+    "age": "20",
+    "first_name": "Alice",
+    "id": "5",
+    "last_name": "Johnson"
+  },
+  {
+    "age": "22",
+    "first_name": "Bob",
+    "id": "6",
+    "last_name": "Smith"
+  },
+  {
+    "age": "25",
+    "first_name": "Charlie",
+    "id": "7",
+    "last_name": "Brown"
+  }
+]
+
+9. DELETE first student
+200
+{
+  "message": "Student with id 1 has been deleted"
+}
+
+10. GET all students
+200
+[
+  {
+    "age": "30",
+    "first_name": "Anna",
+    "id": "2",
+    "last_name": "Hogron"
+  },
+  {
+    "age": "35",
+    "first_name": "Chris",
+    "id": "3",
+    "last_name": "Evans"
+  },
+  {
+    "age": "33",
+    "first_name": "John",
+    "id": "4",
+    "last_name": "Krack"
+  },
+  {
+    "age": "20",
+    "first_name": "Alice",
+    "id": "5",
+    "last_name": "Johnson"
+  },
+  {
+    "age": "22",
+    "first_name": "Bob",
+    "id": "6",
+    "last_name": "Smith"
+  },
+  {
+    "age": "25",
+    "first_name": "Charlie",
+    "id": "7",
+    "last_name": "Brown"
+  }
+]
+
