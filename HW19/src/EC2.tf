@@ -2,7 +2,7 @@ data "aws_ami" "amazon_linux" {
   most_recent = true
   owners      = ["amazon"]
 
-  filter {
+  filter {c
     name   = "name"
     values = ["al2023-ami-*-x86_64"]
   }
@@ -14,7 +14,7 @@ data "aws_ami" "amazon_linux" {
 }
 resource "aws_key_pair" "deployer" {
   key_name   = "deployer-key"
-  public_key = "ssh-xxxx"
+  public_key = "ssh-xxx"
 }
 
 resource "aws_security_group" "public" {
