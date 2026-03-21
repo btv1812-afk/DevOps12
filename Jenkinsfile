@@ -1,11 +1,58 @@
 pipeline {
-  agent any
+    agent { label 'worker' }
 
-  stages {
-    stage('Test') {
-      steps {
-        echo 'Hello from Jenkins!'
-      }
+    environment {
+        IMAGE_NAME = 'step-project-2'
+        IMAGE_TAG  = 'latest'
     }
-  }
+
+    stages {
+
+        stage('Checkout code') {
+            steps {
+                git branch: 'main',
+                     url: 'https://github.com/btv1812-afk/DevOps12.git'
+            }
+        }
+
+        stage('Build Docker image') {
+            steps {
+                sh '''
+                  docker build -t $IMAGE_NAME:$IMAGE_TAG Step2
+                '''
+            }
+        }
+
+        stage('Run tests') {
+            steps {
+                sh '''
+                  docker run --rm $IMAGE_NAME:$IMAGE_TAG npm test
+                '''
+            }
+        }
+
+        stage('Push image to Docker Hub') {
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'dockerhub',
+                        usernameVariable: 'DOCKER_USER',
+                        passwordVariable: 'DOCKER_PASS'
+                    )
+                ]) {
+                    sh '''
+                      docker login -u $DOCKER_USER -p $DOCKER_PASS
+                      docker tag $IMAGE_NAME:$IMAGE_TAG $DOCKER_USER/$IMAGE_NAME:$IMAGE_TAG
+                      docker push $DOCKER_USER/$IMAGE_NAME:$IMAGE_TAG
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        failure {
+            echo 'Tests failed'
+        }
+    }
 }
