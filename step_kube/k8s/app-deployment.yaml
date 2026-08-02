@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: flask-app
+  namespace: dev-ns
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: flask-app
+
+  template:
+    metadata:
+      labels:
+        app: flask-app
+
+    spec:
+      containers:
+      - name: flask-app
+        image: kkkate123/flask-app:latest #gitlab пересобирает образ и буде каждый раз новый образ с уникальным тегом, поэтому нужно указывать latest
+        imagePullPolicy: Always
+
+
+        ports:
+        - containerPort: 5000

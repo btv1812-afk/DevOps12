@@ -1,0 +1,89 @@
+stages:
+  - test
+  - publish
+  - deploy
+
+
+variables:
+  IMAGE_NAME: $DOCKER_USERNAME/flask-app
+
+########################
+# TEST
+########################
+
+test:
+  stage: test
+
+  image: python:3.12
+
+  services:
+    - name: mysql:8.0
+      alias: mysql
+
+  variables:
+    DB_HOST: mysql
+    DB_USER: petshop
+    DB_PASSWORD: hard_passw0rd
+    DB_NAME: shop
+
+    MYSQL_DATABASE: shop
+    MYSQL_USER: petshop
+    MYSQL_PASSWORD: hard_passw0rd
+    MYSQL_ROOT_PASSWORD: hard_passw0rd
+
+  before_script:
+    - pip install -r forStep4/requirements.txt
+
+  script:
+    - python -m unittest discover forStep4/tests
+
+########################
+# BUILD + Push 
+########################
+
+publish:
+  stage: publish
+
+  image: docker:24
+
+  services:
+    - docker:24-dind
+
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+
+  script:
+    - docker version
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker build -t $IMAGE_NAME:latest -t $IMAGE_NAME:$CI_COMMIT_SHORT_SHA .
+    - docker push $IMAGE_NAME:latest
+    - docker push $IMAGE_NAME:$CI_COMMIT_SHORT_SHA
+
+########################
+# DEPLOY
+########################
+
+deploy:
+  stage: deploy
+
+  image: 
+    name: amazon/aws-cli:latest
+    entrypoint: [""]
+  
+
+  before_script:
+    - curl -LO "https://dl.k8s.io/release/v1.33.0/bin/linux/amd64/kubectl"
+    - chmod +x kubectl
+    - mv kubectl /usr/local/bin/
+    
+
+  script:
+    - aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $EKS_CLUSTER_NAME
+    - kubectl apply -f k8s/namespace.yaml
+    - kubectl apply -f k8s/
+    - kubectl rollout restart deployment flask-app -n dev-ns
+    - kubectl rollout status deployment flask-app -n dev-ns
+  
+  only:
+    - master
